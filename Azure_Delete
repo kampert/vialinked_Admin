@@ -1,0 +1,3 @@
+##### Löscht die vorher existierende Umgebung vollständig!
+Remove-AzResourceGroup -Name ViaResourceGroup
+### Jetzt einfach ein paar Minuten warten!!!
