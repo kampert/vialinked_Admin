@@ -58,12 +58,36 @@ $nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 80 `
   -Access "Allow"
 
+# Create an inbound network security group rule for port 443
+$nsgRuleHTTPS = New-AzNetworkSecurityRuleConfig `
+  -Name "ViaNetworkSecurityGroupRuleHTTPS"  `
+  -Protocol "Tcp" `
+  -Direction "Inbound" `
+  -Priority 1010 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 443 `
+  -Access "Allow"
+
+# Create an inbound network security group rule for port 25
+$nsgRuleSMTP = New-AzNetworkSecurityRuleConfig `
+  -Name "ViaNetworkSecurityGroupRuleSMTP"  `
+  -Protocol "Tcp" `
+  -Direction "Inbound" `
+  -Priority 1011 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 25 `
+  -Access "Allow"
+
 # Create a network security group
 $nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName "ViaResourceGroup" `
   -Location "NorthEurope" `
   -Name "ViaNetworkSecurityGroup" `
-  -SecurityRules $nsgRuleSSH,$nsgRuleWeb
+  -SecurityRules $nsgRuleSSH,$nsgRuleWeb,$nsgRuleHTTPS,$nsgRuleSMTP
 
 ###### Schritt 4
 
