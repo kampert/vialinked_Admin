@@ -14,7 +14,7 @@ sudo chmod -R 755 /opt/diginata
 cd /opt/diginata/api-server/server
 cat package.json 
 
-rm package-lock.json
-rm -r node_modules
+sudo rm package-lock.json
+sudo rm -r node_modules
 sudo npm install
 
