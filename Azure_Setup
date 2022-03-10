@@ -124,7 +124,7 @@ Add-AzVMNetworkInterface `
   -Id $nic.Id
 
 # Configure the SSH key
-$sshPublicKey = cat ~/.ssh/andreas_rsa_4096.pub
+$sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey `
   -VM $vmconfig `
   -KeyData $sshPublicKey `
