@@ -1,6 +1,8 @@
-#####
-##### Clone Github, transpile the client sources and move Files to the right directories
-#####
+############
+#
+# Github Clone für Admin und Client/Server
+#
+#################
 
 echo '   Clone Github'
 cd $home
