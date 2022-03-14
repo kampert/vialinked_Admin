@@ -1,0 +1,29 @@
+Log
+
+  Azure_Delete
+  Azure Setup
+
+  Google Domains aufrufen und IP ändern
+
+  Manuell Linux Server OS Änderungen
+
+  Manuell Private Key hinzufügen
+   
+  git_clone.sh
+
+  install_nginx.sh
+
+  config_nginx.sh
+Fehler: Package.json - Version Prototype geht nicht!
+Fehler: npm install --save-dev cpy-cli@4.1.0 
+   bei npm run build-dev
+Fehler: leaflet fehlt - Manuell nachinstalliert
+Warning: Webpack is already provided by Webpack Encore, also adding it to your package.json file may cause issues
+
+  install_mongodb.sh
+
+  install_nodejs.sh /* habe ich doch vorher schon installiert bei config_nginx.sh
+
+  config_nodejs.sh
+
+
