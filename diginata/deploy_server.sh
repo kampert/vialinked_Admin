@@ -1,0 +1,1 @@
+ sudo cp -r ~/git_vialinked/server server
