@@ -15,6 +15,8 @@ sudo chmod -R 755 /var/www/diginata
 cd ~/git_vialinked/client
 rm .env
 cp ~/git_vialinked_admin/diginata/nginx_env .env
+# Transpilieren verlangt die Installation von npm
+bash ~/git_vialinked_admin/diginata/install_nodejs.sh
 
 # Schritt 3: Bereitstellung und Definition Reverse Proxy
 sudo cp config_nginx_diginata.com.conf /etc/nginx/sites-available/diginata.com.conf
