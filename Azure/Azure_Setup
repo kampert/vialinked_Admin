@@ -139,3 +139,6 @@ New-AzVM `
 ####### Schritt 7 - Anzeige der öffentlichen IP Adresse
 
 Get-AzPublicIpAddress -ResourceGroupName "ViaResourceGroup" | Select "IpAddress"
+
+####### Schritt 8 - Manuelle Änderung in Google Domains
+https://domains.google.com/registrar/diginata.com/dns?_ga=2.247899396.282634096.1646920022-89457691.1645526018

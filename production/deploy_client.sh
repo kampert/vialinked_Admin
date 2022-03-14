@@ -9,7 +9,7 @@
 # Schritt 1: Transpile client
 cd ~/git_vialinked/client
 rm .env
-mv ~/git_vialinked_admin/production/nginx_env .env
+cp ~/git_vialinked_admin/production/nginx_env .env
 sudo npm install
 sudo npm run build-dev
 
