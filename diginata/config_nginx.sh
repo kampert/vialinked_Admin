@@ -20,7 +20,7 @@ cp ~/git_vialinked_admin/diginata/nginx_env .env
 bash ~/git_vialinked_admin/diginata/install_nodejs.sh
 sudo npm install
 sudo npm run build-dev
-sudo mv ~/git_vialinked/client/www /var/www/diginata
+sudo mv ~/git_vialinked/client/www/ /var/www/diginata
 sudo nginx -t
 sudo systemctl restart nginx
 
