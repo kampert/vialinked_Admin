@@ -11,6 +11,11 @@ sudo mkdir -p /var/www/diginata
 sudo chown -R $USER:$GROUP /var/www/diginata
 sudo chmod -R 755 /var/www/diginata
 
+# Transpilieren des Clients
+cd ~/git_vialinked/client
+rm .env
+cp ~/git_vialinked_admin/diginata/nginx_env .env
+
 # Schritt 3: Bereitstellung und Definition Reverse Proxy
 sudo cp config_nginx_diginata.com.conf /etc/nginx/sites-available/diginata.com.conf
 cat /etc/nginx/sites-available/diginata.com.conf 
