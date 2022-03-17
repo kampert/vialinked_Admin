@@ -33,5 +33,5 @@ git clone git@github.com:FriedhelmKoch/viaLinked.git  git_vialinked
 echo '   Client/Server Clone finished'
 echo '**************************************************'
 
-cp git_vialinked_admin/git_clone.sh ~/git_clone.sh
+cp -rf git_vialinked_admin/git_clone.sh ~/git_clone.sh
 
