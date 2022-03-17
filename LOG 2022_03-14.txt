@@ -25,5 +25,16 @@ Warning: Webpack is already provided by Webpack Encore, also adding it to your p
   install_nodejs.sh /* habe ich doch vorher schon installiert bei config_nginx.sh
 
   config_nodejs.sh
+Warning: WARN deprecated crypto@1.0.1: This package is no longer supported. It's now a built-in Node module. If you've depended on crypto, you should switch to the one that's built-in.
+npm WARN deprecated superagent@3.8.3: Please upgrade to v7.0.2+ of superagent.  We have fixed numerous issues with streams, form-data, attach(), filesystem errors not bubbling up (ENOENT on attach()), and all tests are now passing.  See the releases tab for more information at <https://github.com/visionmedia/superagent/releases>.
+npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm WARN deprecated @types/bson@4.2.0: This is a stub types definition. bson provides its own type definitions, so you do not need this installed.
+npm WARN deprecated formidable@1.2.6: Please upgrade to latest, formidable@v2 or formidable@
+npm WARN notsup Unsupported engine for klaw@4.0.1: wanted: {"node":">=14.14.0"} (current: {"node":"12.22.10","npm":"6.14.16"})
+npm WARN notsup Not compatible with your version of node/npm: klaw@4.0.1
 
+npm install --save-dev mocha@9.2.2 
 
+Fehler 403 Forbidden nginx
+
+   Mongo User anlegen
