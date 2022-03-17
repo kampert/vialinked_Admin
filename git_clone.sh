@@ -4,6 +4,13 @@
 #
 #######################################
 
+cd $home
+cd .ssh
+chmod -R 600 andreas_rsa_4096
+# Ist der Agent gestartet?
+eval `ssh-agent`
+ssh-add andreas_rsa_4096
+
 echo '**************************************************'
 echo '   Github Clone für Admin und Client/Server'
 echo ' '
@@ -25,4 +32,6 @@ echo '   Github Clone für Client/Server'
 git clone git@github.com:FriedhelmKoch/viaLinked.git  git_vialinked
 echo '   Client/Server Clone finished'
 echo '**************************************************'
+
+cp git_vialinked_admin/git_clone.sh ~/git_clone.sh
 
