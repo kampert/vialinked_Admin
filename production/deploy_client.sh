@@ -51,9 +51,10 @@
 #
 ######################################################################
 datum=`date +%Y-%m-%d_%H-%M`
-echo $datum
-sudo mv /var/www/vialinked /var/www/vialinked.$datum
-
+echo' '
+echo 'Alte Client Version gesichert nach /var/www/vialinked.'$datum
+sudo mv -v /var/www/vialinked /var/www/vialinked.$datum
+echo ' '
 
 ######################################################################
 #
@@ -61,7 +62,8 @@ sudo mv /var/www/vialinked /var/www/vialinked.$datum
 #
 ######################################################################
 
-sudo cp -r ~/git_vialinked/client/httpdocs/* /var/www/vialinked
+sudo mkdir /var/www/vialinked
+sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/vialinked
 
 
 ######################################################################
