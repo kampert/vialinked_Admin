@@ -53,6 +53,7 @@ echo '   '
 echo '**************************************************'
 echo 'Neue Version wird kopiert'
 sudo mkdir /var/www/vhosts/vialinked.com/api-server
+sudo mkdir /var/www/vhosts/vialinked.com/api-server/server
 # sudo mkdir /opt/vialinked
 sudo cp -r -v ~/git_vialinked/server/*  /var/www/vhosts/vialinked.com/api-server/server
 sudo cp -v    ~/git_vialinked/routes.js /var/www/vhosts/vialinked.com/routes.js
