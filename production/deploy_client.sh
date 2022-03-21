@@ -51,10 +51,13 @@
 #
 ######################################################################
 datum=`date +%Y-%m-%d_%H-%M`
-echo' '
-echo 'Alte Client Version gesichert nach /var/www/vialinked.'$datum
+
+echo '**************************************************'
+echo '   '
+echo 'Alte Client Version wird gesichert nach /var/www/vialinked.'$datum
+
 sudo mv -v /var/www/vialinked /var/www/vialinked.$datum
-echo ' '
+echo '   '
 
 ######################################################################
 #
@@ -64,14 +67,18 @@ echo ' '
 
 sudo mkdir /var/www/vialinked
 sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/vialinked
-
+echo '   '
 
 ######################################################################
 #
 # Schritt 4: Neustart des nginx - Server
 #
 ######################################################################
-
+echo '**************************************************'
+echo ' Neustart nginx  '
 sudo nginx -t                                  # Kontrolle der nginx - Konfiguration
 sudo systemctl restart nginx
+echo '   '
+echo '**************************************************'
+
 
