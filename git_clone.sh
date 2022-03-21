@@ -34,6 +34,7 @@
 cd $home
 cd .ssh
 chmod -R 600 andreas_rsa_4096
+eval `ssh-agent`
 ssh-add andreas_rsa_4096
 
 
