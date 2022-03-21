@@ -83,11 +83,12 @@ echo 'npm install'
 cd /var/www/vhosts/vialinked.com/api-server/server
 sudo cp -v ~/git_vialinked_admin/production/server_env /var/www/vhosts/vialinked.com/api-server/server/.env
 #
-sudo rm /var/www/vhosts/vialinked.com/api-server/server/package-lock.json
+# sudo rm /var/www/vhosts/vialinked.com/api-server/server/package-lock.json
 sudo rm /var/www/vhosts/vialinked.com/api-server/server/README.md
 sudo rm /var/www/vhosts/vialinked.com/api-server/server/docker-compose.yml
 #
-sudo npm install
+sudo npm install --no-fund
+sudo npm audit fix --force 
 echo '   '
 
 ######################################################################
