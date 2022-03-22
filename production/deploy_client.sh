@@ -73,9 +73,22 @@ sudo cp -r -v ~/git_vialinked/client/www/* /var/www/vialinked
 #sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/vialinked
 echo '   '
 
+
 ######################################################################
 #
-# Schritt 4: Neustart des nginx - Server
+# Schritt 4: Setzen der Berechtigungen
+#
+######################################################################
+echo '**************************************************'
+echo 'Setzen der Berechtigungen für viaservice'
+sudo chown -R viaservice:via /var/www/vialinked
+sudo chmod -R 755  /var/www/vialinked
+echo '   '
+
+
+######################################################################
+#
+# Schritt 5: Neustart des nginx - Server
 #
 ######################################################################
 echo '**************************************************'

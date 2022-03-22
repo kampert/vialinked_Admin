@@ -74,7 +74,19 @@ echo '   '
 
 ######################################################################
 #
-# Schritt 4: Neustart des nginx - Server
+# Schritt 4: Setzen der Berechtigungen
+#
+######################################################################
+echo '**************************************************'
+echo 'Setzen der Berechtigungen für viaservice'
+sudo chown -R viaservice:via /var/www/diginata
+sudo chmod -R 755  /var/www/diginata
+echo '   '
+
+
+######################################################################
+#
+# Schritt 5: Neustart des nginx - Server
 #
 ######################################################################
 echo '**************************************************'
