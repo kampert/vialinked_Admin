@@ -23,6 +23,7 @@
 #================================================================
 #  HISTORY
 #     2022_03-21 : Andreas Kampert : Script creation
+#     2022_03-22 : Transpilieren im Script, da von Friedhelm geliefertes httpsdocs fehlerhaft ist
 #
 #================================================================
 # END_OF_HEADER
@@ -32,15 +33,17 @@
 ######################################################################
 #
 # Schritt 1: Transpile client
-# Dieser Schritt entfällt, da Friedhelm jetzt in der Entwicklungsumgebung transpiliert und 
-# das Verzeichnis httpdocs zur Verfügung stellt
+# Dieser Schritt sollte entfallen, da Friedhelm jetzt in der Entwicklungsumgebung transpiliert  
+# und das Verzeichnis httpdocs zur Verfügung stellt
 #
 ######################################################################
-# cd ~/git_vialinked/client
-# rm .env
-# cp ~/git_vialinked_admin/production/nginx_env .env
-# sudo npm install
-# sudo npm run build-dev
+cd ~/git_vialinked/client
+rm .env
+cp -v ~/git_vialinked_admin/production/nginx_env .env
+sudo npm install webpack@5.70.0 --force       # Workaround wg Development Issue
+sudo npm audit fix --force                                # Workaround wg Development Issue
+sudo npm install
+sudo npm run build-dev
 
 
 ######################################################################
@@ -66,7 +69,8 @@ echo '   '
 echo '**************************************************'
 echo 'Neue Version wird kopiert'
 sudo mkdir /var/www/vialinked
-sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/vialinked
+sudo cp -r -v ~/git_vialinked/client/www/* /var/www/vialinked
+#sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/vialinked
 echo '   '
 
 ######################################################################

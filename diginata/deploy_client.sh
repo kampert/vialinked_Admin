@@ -32,15 +32,18 @@
 ######################################################################
 #
 # Schritt 1: Transpile client
-# Dieser Schritt entfällt, da Friedhelm jetzt in der Entwicklungsumgebung transpiliert und 
-# das Verzeichnis httpdocs zur Verfügung stellt
+# Dieser Schritt sollte entfallen, da Friedhelm jetzt in der Entwicklungsumgebung transpiliert  
+# und das Verzeichnis httpdocs zur Verfügung stellt
+# Da Friedhelm aber für diginata kein passendes .env File hat, wird hier transpiliert
 #
 ######################################################################
-# cd ~/git_vialinked/client
-# rm .env
-# cp ~/git_vialinked_admin/diginata/nginx_env .env
-# sudo npm install
-# sudo npm run build-dev
+cd ~/git_vialinked/client
+rm .env
+cp ~/git_vialinked_admin/diginata/nginx_env .env
+sudo npm install webpack@5.70.0 --force       # Workaround wg Development Issue
+sudo npm audit fix --force                                # Workaround wg Development Issue
+sudo npm install
+sudo npm run build-dev
 
 
 ######################################################################
@@ -55,7 +58,7 @@ echo '   '
 echo '**************************************************'
 echo 'Alte Client Version wird gesichert nach -> /var/www/diginata.'$datum
 
-sudo mv -v /var/www/vialinked /var/www/diginata.$datum
+sudo mv -v /var/www/diginata /var/www/diginata.$datum
 echo '   '
 
 ######################################################################
@@ -66,7 +69,7 @@ echo '   '
 echo '**************************************************'
 echo 'Neue Version wird kopiert'
 sudo mkdir /var/www/diginata
-sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/diginata
+sudo cp -r -v ~/git_vialinked/client/www/* /var/www/diginata
 echo '   '
 
 ######################################################################
