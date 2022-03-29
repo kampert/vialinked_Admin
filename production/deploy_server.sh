@@ -89,6 +89,8 @@ sudo rm /var/www/vhosts/vialinked.com/api-server/server/docker-compose.yml
 #
 sudo npm install --no-fund
 sudo npm audit fix --force 
+echo ' Prüfen der mongoose-fuzzy-searching Version - required: 2.0.2'
+sudo npm list
 echo '   '
 
 ######################################################################
