@@ -71,7 +71,7 @@ sudo chmod +x server.js
 echo '   '
 
 echo 'Die whitelist muss eventuell geändert werden!'
-cd /opt/vialinked/server/src/
+cd /opt/diginata/server/src/
 #sudo nano 'whitelist(demo)'
 
 ######################################################################
@@ -96,6 +96,7 @@ sudo npm list                    # Check der Version von mongoose-fuzzy-searchin
 sudo npm uninstall mongoose-fuzzy-searching
 sudo npm install mongoose-fuzzy-searching@2.0.2
 sudo npm list
+
 echo '   '
 
 sudo chown -R viaservice:via /opt/diginata
