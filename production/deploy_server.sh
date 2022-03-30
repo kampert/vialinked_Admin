@@ -22,7 +22,9 @@
 #-
 #================================================================
 #  HISTORY
-#     2022_03-21 : Andreas Kampert : Script creation
+#     2022_03-21: Andreas Kampert : Script creation
+#     2022_03-30: Closed Beta V0.1 ausgerollt und Script aktualisiert 
+#                          Enthält noch die alten Verzeichnispfade als Kommentar   
 #
 #================================================================
 # END_OF_HEADER
@@ -79,8 +81,9 @@ cd /opt/vialinked/server/src
 sudo chmod +x server.js
 echo '   '
 
-## whitelist ändern!
-
+echo 'Die whitelist muss eventuell geändert werden!'
+cd /opt/vialinked/server/src/
+#sudo nano 'whitelist(demo)'
 
 ######################################################################
 #
@@ -106,8 +109,9 @@ sudo rm /opt/vialinked/server/docker-compose.yml
 
 sudo npm install --no-fund
 sudo npm audit fix --force 
+
 echo ' Prüfen der mongoose-fuzzy-searching Version - required: 2.0.2'
-sudo npm list
+sudo npm list                    # Check der Version von mongoose-fuzzy-searching
 sudo npm uninstall mongoose-fuzzy-searching
 sudo npm install mongoose-fuzzy-searching@2.0.2
 sudo npm list

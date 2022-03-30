@@ -3,10 +3,8 @@ SMTP_SERVER_PORT=465
 SMTP_SERVER_USER=info@vialinked.com
 SMTP_SERVER_PASSWORD=4711-Koelnischwasser
 CLIENT_ORIGIN=https://vialinked.com
-SERVER_NAME=api.vialinked.com
+SERVER_NAME=vialinked.com
 # MONGO_URI=mongodb://root:rootpassword@127.0.0.1:27017
-# change database from test to another. Do this by exchanging production in the following URI with
-# the correct database name
 MONGO_URI=mongodb://viamongoadmin:4711-Koelnischwasser@127.0.0.1:27017/production?authSource=production
 JWT_SECRET=CnhxOsScyJkjZCjATNxOrREQehIfpA3MLRvzs0kZ3lTnHv8nl6yw8Maa1woQgAT
 # TODO: replace with production key

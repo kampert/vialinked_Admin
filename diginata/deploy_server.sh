@@ -22,7 +22,8 @@
 #-
 #================================================================
 #  HISTORY
-#     2022_03-21 : Andreas Kampert : Script creation
+#     2022_03-21: Andreas Kampert : Script creation
+#     2022_03-30: Closed Beta V0.1 ausgerollt und Script aktualisiert 
 #
 #================================================================
 # END_OF_HEADER
@@ -55,7 +56,6 @@ sudo mkdir /opt/diginata
 sudo mkdir /opt/diginata/server
 sudo cp -r -v ~/git_vialinked/server/*  /opt/diginata/server
 sudo cp -v    ~/git_vialinked/routes.js /opt/diginata/routes.js
-#sudo cp -v    ~/git_vialinked/routes.js /opt/routes.js
 echo '   '
 
 ######################################################################
@@ -70,6 +70,9 @@ cd /opt/diginata/server/src
 sudo chmod +x server.js
 echo '   '
 
+echo 'Die whitelist muss eventuell geändert werden!'
+cd /opt/vialinked/server/src/
+#sudo nano 'whitelist(demo)'
 
 ######################################################################
 #
@@ -81,13 +84,17 @@ echo 'npm install'
 # .env File korrigieren
 cd /opt/diginata/server
 sudo cp -v ~/git_vialinked_admin/diginata/server_env /opt/diginata/server/.env
-#
+
 sudo rm /opt/diginata/server/README.md
 sudo rm /opt/diginata/server/docker-compose.yml
-#
+
 sudo npm install --no-fund
 sudo npm audit fix --force 
+
 echo ' Prüfen der mongoose-fuzzy-searching Version - required: 2.0.2'
+sudo npm list                    # Check der Version von mongoose-fuzzy-searching
+sudo npm uninstall mongoose-fuzzy-searching
+sudo npm install mongoose-fuzzy-searching@2.0.2
 sudo npm list
 echo '   '
 
