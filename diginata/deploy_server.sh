@@ -70,6 +70,7 @@ cd /opt/diginata/server/src
 sudo chmod +x server.js
 echo '   '
 
+
 ######################################################################
 #
 # Schritt 4: Installation
@@ -90,6 +91,8 @@ echo ' Prüfen der mongoose-fuzzy-searching Version - required: 2.0.2'
 sudo npm list
 echo '   '
 
+sudo chown -R viaservice:via /opt/diginata
+
 ######################################################################
 #
 # Schritt 5: Neustart des nodejs - Servers
@@ -109,3 +112,17 @@ echo ' 2. sudo sudo systemctl stop diginata-service'
 echo ' 3. nodemon src/server.js'
 echo '   '
 echo '*** Ende deploy_server.sh ***'
+
+
+
+
+######################################################################
+#
+# Schritt x: console.log
+#
+######################################################################
+#  const { username, password } = req.body;
+#    console.log (new Date(), "- authenticateUser - User:", username)
+
+#    console.log (new Date(), "- registerUser - Username: ", username, "email:", email)
+#    // Dismiss register, if email not in whitelist

@@ -22,7 +22,9 @@
 #-
 #================================================================
 #  HISTORY
-#     2022_03-21 : Andreas Kampert : Script creation
+#     2022_03-21: Andreas Kampert : Script creation
+#     2022_03-22: Transpilieren im Script, da von Friedhelm geliefertes httpsdocs fehlerhaft ist
+#     2022_03-30: Closed Beta V0.1 ausgerollt und Script aktualisiert 
 #
 #================================================================
 # END_OF_HEADER
@@ -38,11 +40,16 @@
 #
 ######################################################################
 cd ~/git_vialinked/client
+# lösche möglicherweise falsche .env Dateien und kopiere eine korrigierte Fassung
 rm .env
+rm .'env(local)'
+rm .'env(server)'
+rm .gitignore
+rm README.md
 cp ~/git_vialinked_admin/diginata/nginx_env .env
 sudo npm install webpack@5.70.0 --force       # Workaround wg Development Issue
 sudo npm audit fix --force                                # Workaround wg Development Issue
-sudo npm install
+sudo npm install --nofund
 sudo npm run build-dev
 
 
@@ -80,7 +87,6 @@ echo '   '
 echo '**************************************************'
 echo 'Setzen der Berechtigungen für viaservice'
 sudo chown -R viaservice:via /var/www/diginata
-sudo chmod -R 755  /var/www/diginata
 echo '   '
 
 

@@ -22,8 +22,9 @@
 #-
 #================================================================
 #  HISTORY
-#     2022_03-21 : Andreas Kampert : Script creation
-#     2022_03-22 : Transpilieren im Script, da von Friedhelm geliefertes httpsdocs fehlerhaft ist
+#     2022_03-21: Andreas Kampert : Script creation
+#     2022_03-22: Transpilieren im Script, da von Friedhelm geliefertes httpsdocs fehlerhaft ist
+#     2022_03-30: Closed Beta V0.1 ausgerollt und Script aktualisiert 
 #
 #================================================================
 # END_OF_HEADER
@@ -33,16 +34,25 @@
 ######################################################################
 #
 # Schritt 1: Transpile client
-# Dieser Schritt sollte entfallen, da Friedhelm jetzt in der Entwicklungsumgebung transpiliert  
-# und das Verzeichnis httpdocs zur Verfügung stellt
+# Dieser Schritt sollte eigentlich entfallen, da Friedhelm in der Entwicklungsumgebung 
+# transpiliert und das Verzeichnis httpdocs zur Verfügung stellt
+# 
+# Da bisher aber immer Fehler mit Packages aufgetreten sind und auch die 
+# Testumgebung mit derselben Methode ausgeliefert wird, wird im Script transpiliert.
 #
 ######################################################################
 cd ~/git_vialinked/client
+# lösche möglicherweise falsche .env Dateien und kopiere eine korrigierte Fassung
 rm .env
+rm .'env(local)'
+rm .'env(server)'
+rm .gitignore
+rm README.md
 cp -v ~/git_vialinked_admin/production/nginx_env .env
+
 sudo npm install webpack@5.70.0 --force       # Workaround wg Development Issue
 sudo npm audit fix --force                                # Workaround wg Development Issue
-sudo npm install
+sudo npm install --nofund
 sudo npm run build-dev
 
 
@@ -70,7 +80,6 @@ echo '**************************************************'
 echo 'Neue Version wird kopiert'
 sudo mkdir /var/www/vialinked
 sudo cp -r -v ~/git_vialinked/client/www/* /var/www/vialinked
-#sudo cp -r -v ~/git_vialinked/client/httpdocs/* /var/www/vialinked
 echo '   '
 
 
@@ -82,7 +91,6 @@ echo '   '
 echo '**************************************************'
 echo 'Setzen der Berechtigungen für viaservice'
 sudo chown -R viaservice:via /var/www/vialinked
-sudo chmod -R 755  /var/www/vialinked
 echo '   '
 
 

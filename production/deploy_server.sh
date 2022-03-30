@@ -41,8 +41,8 @@ echo '   '
 echo '**************************************************'
 echo 'Alte Server Version wird gesichert nach -> /opt/vialinked.'$datum
 
-# sudo mv -v /opt/vialinked /opt/vialinked.$datum
-sudo mv -v /var/www/vhosts/vialinked.com/api-server /var/www/vhosts/vialinked.com/api-server.$datum
+sudo mv -v /opt/vialinked /opt/vialinked.$datum
+# sudo mv -v /var/www/vhosts/vialinked.com/api-server /var/www/vhosts/vialinked.com/api-server.$datum
 echo '   '
 
 ######################################################################
@@ -52,12 +52,16 @@ echo '   '
 ######################################################################
 echo '**************************************************'
 echo 'Neue Version wird kopiert'
-sudo mkdir /var/www/vhosts/vialinked.com/api-server
-sudo mkdir /var/www/vhosts/vialinked.com/api-server/server
-# sudo mkdir /opt/vialinked
-sudo cp -r -v ~/git_vialinked/server/*  /var/www/vhosts/vialinked.com/api-server/server
-sudo cp -v    ~/git_vialinked/routes.js /var/www/vhosts/vialinked.com/routes.js
-sudo cp -v    ~/git_vialinked/routes.js /var/www/vhosts/vialinked.com/api-server/routes.js
+# sudo mkdir /var/www/vhosts/vialinked.com/api-server
+# sudo mkdir /var/www/vhosts/vialinked.com/api-server/server
+sudo mkdir /opt/vialinked
+sudo mkdir /opt/vialinked/server
+sudo cp -r -v ~/git_vialinked/server/*  /opt/vialinked/server
+sudo cp -v    ~/git_vialinked/routes.js /opt/vialinked/routes.js
+
+#sudo cp -r -v ~/git_vialinked/server/*  /var/www/vhosts/vialinked.com/api-server/server
+#sudo cp -v    ~/git_vialinked/routes.js /var/www/vhosts/vialinked.com/routes.js
+#sudo cp -v    ~/git_vialinked/routes.js /var/www/vhosts/vialinked.com/api-server/routes.js
 echo '   '
 
 ######################################################################
@@ -68,9 +72,15 @@ echo '   '
 echo '**************************************************'
 echo 'Berechtigungen setzen'
 # server.js als Executable markieren
-cd /var/www/vhosts/vialinked.com/api-server/server/src
+
+cd /opt/vialinked/server/src
+
+# cd /var/www/vhosts/vialinked.com/api-server/server/src
 sudo chmod +x server.js
 echo '   '
+
+## whitelist ändern!
+
 
 ######################################################################
 #
@@ -80,18 +90,30 @@ echo '   '
 echo '**************************************************'
 echo 'npm install'
 # .env File korrigieren
-cd /var/www/vhosts/vialinked.com/api-server/server
-sudo cp -v ~/git_vialinked_admin/production/server_env /var/www/vhosts/vialinked.com/api-server/server/.env
+#cd /var/www/vhosts/vialinked.com/api-server/server
+#sudo cp -v ~/git_vialinked_admin/production/server_env /var/www/vhosts/vialinked.com/api-server/server/.env
 #
 # sudo rm /var/www/vhosts/vialinked.com/api-server/server/package-lock.json
-sudo rm /var/www/vhosts/vialinked.com/api-server/server/README.md
-sudo rm /var/www/vhosts/vialinked.com/api-server/server/docker-compose.yml
+# sudo rm /var/www/vhosts/vialinked.com/api-server/server/README.md
+# sudo rm /var/www/vhosts/vialinked.com/api-server/server/docker-compose.yml
 #
+
+cd /opt/vialinked/server
+sudo cp -v ~/git_vialinked_admin/production/server_env /opt/vialinked/server/.env
+
+sudo rm /opt/vialinked/server/README.md
+sudo rm /opt/vialinked/server/docker-compose.yml
+
 sudo npm install --no-fund
 sudo npm audit fix --force 
 echo ' Prüfen der mongoose-fuzzy-searching Version - required: 2.0.2'
 sudo npm list
+sudo npm uninstall mongoose-fuzzy-searching
+sudo npm install mongoose-fuzzy-searching@2.0.2
+sudo npm list
 echo '   '
+
+sudo chown -R viaservice:via /opt/vialinked
 
 ######################################################################
 #
@@ -113,3 +135,16 @@ echo ' 3. nodemon src/server.js'
 echo '   '
 echo '*** Ende deploy_server.sh ***'
 echo '   '
+
+
+
+######################################################################
+#
+# Schritt x: console.log
+#
+######################################################################
+#  const { username, password } = req.body;
+#    console.log (new Date(), "- authenticateUser - User:", username)
+
+#    console.log (new Date(), "- registerUser - Username: ", username, "email:", email)
+#    // Dismiss register, if email not in whitelist
