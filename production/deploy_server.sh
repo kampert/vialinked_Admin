@@ -25,6 +25,7 @@
 #     2022_03-21: Andreas Kampert : Script creation
 #     2022_03-30: Closed Beta V0.1 ausgerollt und Script aktualisiert 
 #                          Enthält noch die alten Verzeichnispfade als Kommentar   
+#     2022_04-04  Whitelist Integration
 #
 #================================================================
 # END_OF_HEADER
@@ -82,8 +83,9 @@ sudo chmod +x server.js
 echo '   '
 
 echo 'Die whitelist muss eventuell geändert werden!'
+echo 'Jetzt wird whitelist(demo) nach whitelist kopiert'
 cd /opt/vialinked/server/src/
-#sudo nano 'whitelist(demo)'
+sudo cp -v 'whitelist(demo)' whitelist
 
 ######################################################################
 #
