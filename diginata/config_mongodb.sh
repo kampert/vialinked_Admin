@@ -9,7 +9,7 @@ db.createUser(
 )
 exit
 
-cd /opt/diginata/api-server/server
+cd /opt/diginata/server
 node seeding/seeder.js
 
 mongo
