@@ -18,28 +18,23 @@ rm package-lock.json
 rm -r httpdocs
 rm README.md
 rm robots.txt
-cp ~/git_vialinked_admin/diginata/apache_env .env
+cp -v ~/git_vialinked_admin/diginata/apache_env .env
 # Transpilieren verlangt die Installation von npm
 bash ~/git_vialinked_admin/diginata/install_nodejs.sh
 sudo npm install
 sudo npm install --force
 sudo npm run build-dev
-sudo mv -v ~/git_vialinked/client/www/ /var/www/diginata
-sudo apache2ctl configtest
-sudo systemctl restart apache2
 
 # Schritt 4: Bereitstellung und Definition Reverse Proxy
-sudo cp ~/git_vialinked_admin/diginata/config_apache_diginata.com.conf /etc/apache2/sites-available/diginata.com.conf
+sudo cp -v ~/git_vialinked_admin/diginata/config_apache_diginata.com.conf /etc/apache2/sites-available/diginata.com.conf
 cat /etc/apache2/sites-available/diginata.com.conf 
-sudo a2ensite diginata.conf
+sudo a2ensite diginata.com.conf
 sudo systemctl reload apache2
 sudo apache2ctl configtest
 sudo systemctl restart apache2
 
 # Schritt 5: HTTPS Konfiguration
-sudo snap install --classic certbot
-sudo apt install certbot python3-certbot-nginx
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
-sudo certbot --nginx -d diginata.com -d www.diginata.com
-sudo nginx -t
-sudo systemctl restart nginx
+sudo apt install certbot python3-certbot-apache
+sudo certbot --apache
+sudo apachectl -t -D DUMP_VHOSTS
+
