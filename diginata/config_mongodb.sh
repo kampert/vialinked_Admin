@@ -10,7 +10,7 @@ db.createUser(
 exit
 
 cd /opt/diginata/server
-node seeding/seeder.js
+sudo node seeding/seeder.js
 
 mongo
 show databases

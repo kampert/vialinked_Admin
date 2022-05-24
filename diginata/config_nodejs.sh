@@ -1,21 +1,28 @@
 
-sudo mkdir -p /opt/diginata/api-server/server
+sudo mkdir -p /opt/diginata/server
 
 sudo chown -R $USER:$GROUP /opt/diginata
 sudo chmod -R 755 /opt/diginata
 
-sudo scp -r root@h2911291.stratoserver.net:"/var/www/vhosts/vialinked.com/*" /opt/diginata
 cd /opt/diginata
 ls
-sudo cp -r /opt/diginata/api-server/server/ /opt/diginata/server/
-sudo cp /opt/diginata/api-server/routes.js /opt/diginata/routes.js
-# sudo cp /opt/diginata/api-server/routes.js /opt/diginata/server/routes.js
-cd /opt/diginata
-sudo rm -r /opt/diginata/api-server
+cd /opt/diginata/server
+sudo npm init --yes
 
-sudo chown -R $USER:$GROUP /opt/diginata
+sudo cp -r -v ~/git_vialinked/server/*  /opt/diginata/server
+sudo cp -v    ~/git_vialinked/routes.js /opt/diginata/routes.js
+
+cd /opt/diginata/server/src
+sudo chmod +x server.js
+
+
+
+
+
+sudo chown -R viaservice:via /opt/diginata
 sudo chmod -R 755 /opt/diginata
-cd /opt/diginata/api-server/server
+
+cd /opt/diginata/server
 cat package.json 
 
 sudo rm package-lock.json

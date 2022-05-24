@@ -1,11 +1,8 @@
 ############
 #
-# Installation von nginx
+# Installation von apache
 #
 ############
 
 sudo apt -y update
-sudo apt -y install nginx
-sudo apt list --upgradable
-sudo apt upgrade
-sudo apt autoremove
+sudo apt -y install apache2

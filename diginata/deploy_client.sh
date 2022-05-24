@@ -46,7 +46,7 @@ rm .'env(local)'
 rm .'env(server)'
 rm .gitignore
 rm README.md
-cp ~/git_vialinked_admin/diginata/nginx_env .env
+cp ~/git_vialinked_admin/diginata/apache_env .env
 sudo npm install webpack@5.70.0 --force       # Workaround wg Development Issue
 sudo npm audit fix --force                                # Workaround wg Development Issue
 sudo npm install --nofund
